@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin'e Mesaj Gönder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0f1724;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #1e293b;
+      padding: 24px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      max-width: 400px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+    button {
+      width: 100%;
+      background-color: #06b6d4;
+      color: #04202a;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0891b2;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Admin'e Mesaj Gönder</h1>
+    <form id="msgForm" action="/msg" method="post">
+      <label for="name">Adın</label>
+      <input type="text" id="name" name="name" placeholder="Adını yaz" required />
+
+      <label for="message">Mesaj</label>
+      <textarea id="message" name="message" placeholder="Mesajını yaz" required></textarea>
+
+      <button id="button" type="submit">Gönder</button>
+    </form>
+  </div>
+</body>
+</html>
