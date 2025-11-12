@@ -1,0 +1,35 @@
+extends ../layouts/main-layout.pug
+
+
+block content
+    if (action !== 'undefined' && action === 'edit' )
+        div.alert.alert-success The product has been updated.
+    if (action !== 'undefined' && action === 'delete' )
+        div.alert.alert-danger The product has been deleted.
+    
+    if products.length > 0 
+        .row
+            table.table.table-bordered
+                thead
+                    tr 
+                        th Image 
+                        th Product Name 
+                        th Price 
+                        th Category
+                        th 
+                    tbody 
+                        each product in products 
+                            tr 
+                                td 
+                                    img(src=`/img/${product.imageUrl}` style="height: 150px")
+                                td #{product.name}
+                                td #{product.price} TL 
+                                td #{product.categoryid}
+                                td
+                                    a(href=`/admin/edit-product/${product.id}`)
+                                       .btn.btn-primary.btn-sm Edit
+                                    form(action="/admin/delete-product", method="post") 
+                                        input(type="hidden",name="productid",value=`${product.id}`)
+                                        button(type="submit").btn.btn-danger.btn-sm Delete 
+    else 
+        h1 No Pruduct

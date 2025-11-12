@@ -1,0 +1,37 @@
+extends ../layouts/main-layout.pug
+
+block content
+  .container.mt-5
+    .card.shadow-lg.rounded-4
+      .card-body
+        h3.text-center.mb-4 Edit Products
+        form(action=`/admin/edit-product/${product.id}`, method="POST")
+          .mb-3.row
+            label.col-sm-2.col-form-label(for="productName" ) Name
+            .col-sm-10
+              input.form-control(type="text", name="productName", placeholder="Product Name",value=product.name required)
+
+          .mb-3.row
+            label.col-sm-2.col-form-label(for="productPrice") Price
+            .col-sm-10
+              input.form-control(type="number", name="productPrice", placeholder="Product Price",value=product.price required)
+
+          .mb-3.row
+            label.col-sm-2.col-form-label(for="productImg") Image
+            .col-sm-10
+              input.form-control(type="text", name="productImg", placeholder="Image URL",value=product.imageUrl)
+          
+          .mb-3.row
+            label.col-sm-2.col-form-label(for="productImg") Image
+            .col-sm-10
+              select.form-control(type="text", name="categoryid")
+                each category in categories
+                  option(value=`${category.CategoryID}`) #{category.name} 
+
+          .mb-3.row
+            label.col-sm-2.col-form-label(for="productDesc") Description
+            .col-sm-10
+              textarea.form-control(name="productDesc", rows="3", placeholder="Product Description") #{product.description}
+
+          .text-end.mt-4
+            button.btn.btn-primary.btn-lg.rounded-pill(type="submit") Update Product
