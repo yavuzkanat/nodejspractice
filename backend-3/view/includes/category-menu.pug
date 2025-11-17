@@ -1,0 +1,3 @@
+.list-group.shadow-sm.rounded-3
+        each category in categories
+            a.list-group-item.list-group-item-action(href=`/categories/${category.id}`, class=category.id == selectedCat ? "active" : "") #{category.name}           
