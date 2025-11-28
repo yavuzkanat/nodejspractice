@@ -1,0 +1,21 @@
+extends ../layouts/main-layout.pug
+
+block content
+  .container.mt-5
+    .card.shadow-lg.rounded-4
+      .card-body
+        h3.text-center.mb-4 Add New Category
+        form(action="/admin/add-category", method="POST")
+          .mb-3.row
+            label.col-sm-2.col-form-label(for="categoryName") Category Name
+            .col-sm-10
+              input.form-control(type="text", name="categoryName", placeholder="Product Name", required)
+
+    
+          .mb-3.row
+            label.col-sm-2.col-form-label(for="categoryDesc") Description
+            .col-sm-10
+              textarea.form-control(name="categoryDesc", rows="3", placeholder="Product Description")
+
+          .text-end.mt-4
+            button.btn.btn-primary.btn-lg.rounded-pill(type="submit") Save Category

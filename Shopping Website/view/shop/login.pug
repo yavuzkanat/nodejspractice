@@ -1,0 +1,22 @@
+extends ../layouts/main-layout.pug
+
+
+block content
+  .container.mt-5
+      .card.shadow-lg.rounded-5
+        .card-body
+          h1.text-center.mb-2 Login 
+          form(action="/login", method="POST")
+            .mb-2.row
+              label.col-sm-2.col-form-label(for="email") Email
+              .col-sm-10
+                input.form-control(type="email", name="email", placeholder="email", required)
+            .mb-2.row
+              label.col-sm-2.col-form-label(for="password") Password
+              .col-sm-10
+                input.form-control(type="password", name="password", placeholder="password", required)
+            .text-end.mt-4
+              button.btn.btn-primary.btn-lg.rounded-pill(type="submit") Login
+          if (msg) 
+            div.alert.alert-danger #{msg}
+

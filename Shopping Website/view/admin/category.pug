@@ -1,0 +1,31 @@
+extends ../layouts/main-layout.pug
+
+
+block content
+
+    if (action !== 'undefined' && action === 'edit' )
+        div.alert.alert-success The category has been updated.
+    if (action !== 'undefined' && action === 'delete' )
+        div.alert.alert-danger The category has been deleted.
+    if (action !== 'undefined' && action === 'add' )
+        div.alert.alert-success The category has been added.
+    
+    if categories.length > 0 
+        .row
+            table.table.table-bordered
+                thead
+                    tr 
+                        th Category Name 
+                        th Category Description
+                        th Proccess
+                    tbody 
+                        each cat in categories 
+                            tr  
+                                td #{cat.name} 
+                                td #{cat.description} 
+                                td
+                                    form(action="/admin/delete-category", method="post") 
+                                        input(type="hidden",name="catId",value=`${cat.id}`)
+                                        button(type="submit").btn.btn-danger.btn-sm Delete 
+    else 
+        h1 No Category
